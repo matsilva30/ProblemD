@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int ultimoVisto(int salas[], int mod, int cont) {
+int FIFO(int salas[], int mod, int cont) {
 
     if(salas[0] != mod && salas[1] != mod && salas[2] != mod && salas[3] != mod) {
         for(int k = 0; k < 3; k++) {
@@ -32,11 +32,11 @@ int main() {
     for(int k = 0; k < n; k++) {
         scanf("%d\n", &mod);
         if(mod <= 10 && mod >=1) {
-            LRU = ultimoVisto(salasLRU, mod, LRU);
+            LRU = FIFO(salasLRU, mod, LRU);
         }
     }
 
-    printf("LRU : %d\n", LRU);
+    printf("FIFO : %d\n", LRU);
 
     return 0;
 }
