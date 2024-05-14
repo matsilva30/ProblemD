@@ -1,5 +1,17 @@
-#include<stdio.h>
+#include <stdio.h>
 
+int ultimoVisto(int salas[], int mod, int cont) {
+
+    if(salas[0] != mod && salas[1] != mod && salas[2] != mod && salas[3] != mod) {
+        for(int k = 0; k < 3; k++) {
+            salas[k] = salas[k + 1];
+        }
+        salas[3] = mod;
+        cont++;
+
+    }
+    return cont;
+}
 
 int myrand () {
     static int valor = 45;
@@ -8,53 +20,23 @@ int myrand () {
     return (valor%4);
 }
 
+int main() {
 
-int ultimo_visto(int salas[], int mod, int cont){
+    int n, mod;
+    
+    scanf("%d\n", &n);
 
+    int salasLRU[4] = {1, 2, 3, 4};
+    int LRU = 0;
 
-if(salas[1]!=mod)
-    for(int k= 0 ; k<3;k++ ){
-        salas[k]= salas[k+1];
+    for(int k = 0; k < n; k++) {
+        scanf("%d\n", &mod);
+        if(mod <= 10 && mod >=1) {
+            LRU = ultimoVisto(salasLRU, mod, LRU);
+        }
     }
 
-    salas[3]=mod;
+    printf("LRU : %d\n", LRU);
 
-    cont ++;
-
-    return cont;
-}
-
-
-
-int main (){
-
-int cont_LRU =0;
-int LRU;
-int n;
-int mod;
-int k;
-int salas[4];
-
-scanf("%d/n", &n);
-
-int modelos[4];
-int sala[4]={1,2,3,4};
-
-for(k=0;k<n;k++){
-
-    scanf("%d/n", &mod);
-    if(mod<=10 && mod>=1){
-        modelos[k]=mod;
-    }
-    LRU = ultimo_visto(salas,mod,LRU);
-
-
-
-}
-
-
-
-return 0;
-
-
+    return 0;
 }
